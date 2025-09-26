@@ -1,0 +1,120 @@
+:root{
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --accent:#06b6d4;
+  --muted:#6b7280;
+  --danger:#ef4444;
+  --success: #10b981;
+  --glass: rgba(255,255,255,0.7);
+  --shadow: 0 6px 18px rgba(16,24,40,0.06);
+  --radius:12px;
+  --glass-2: rgba(255,255,255,0.95);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  background: linear-gradient(180deg,#eef2ff 0%, #f6f8fb 100%);
+  color:#0f172a;
+  min-height:100vh;
+  color-scheme: light;
+}
+/* screens */
+.screen.center{display:flex;align-items:center;justify-content:center;height:100vh; position: relative; z-index: 1000;}
+/* card */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+/* auth card */
+.auth-card{
+  width:360px;
+  text-align:center;
+  padding:28px;
+  border-radius:16px;
+  backdrop-filter: blur(6px);
+  background: var(--glass-2);
+}
+.brand .logo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:64px;height:64px;border-radius:12px;
+  background:linear-gradient(135deg,var(--primary),#7c3aed);
+  color:white;font-weight:700;font-size:20px;margin:0 auto 12px;
+  box-shadow: 0 6px 24px rgba(37,99,235,0.18);
+}
+.auth-card h1{margin:0 0 6px;font-size:22px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.form-row{margin:12px 0}
+label{display:block;text-align:left;font-size:13px;color:#111827;margin-bottom:6px}
+input,select,textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #e6e9ef;
+  font-size:14px;
+  background:transparent;
+}
+.pw-row{display:flex;gap:8px}
+.icon-btn{background:transparent;border:none;cursor:pointer;padding:6px;border-radius:8px}
+/* layout */
+.hidden{display:none !important;} /* Force hidden with !important to prevent overlaps */
+#app-screen{display:flex;min-height:100vh}
+.sidebar{
+  width:260px;padding:20px;box-shadow:0 6px 30px rgba(2,6,23,0.06);
+  background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0.7));
+  display:flex;flex-direction:column;gap:20px;
+}
+.brand-sm{display:flex;gap:12px;align-items:center}
+.logo-sm{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--primary),#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+.sidebar nav{display:flex;flex-direction:column;gap:8px}
+.nav-btn{
+  background:transparent;border:none;padding:10px 12px;border-radius:8px;text-align:left;cursor:pointer;font-weight:600;color:#0f172a;
+}
+.nav-btn:hover{background:rgba(99,102,241,0.06)}
+.nav-btn.active{background:linear-gradient(90deg,#eef2ff,#f1f5f9);box-shadow:inset 0 0 0 1px rgba(37,99,235,0.06)}
+.spacer{flex:1}
+.user-card{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px dashed #eef2ff}
+/* main */
+.main{flex:1;padding:28px}
+.top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:12px}
+.grid.two-col{display:grid;grid-template-columns:1fr 360px;gap:16px}
+.cards-row{display:flex;gap:16px;margin-top:18px;flex-wrap:wrap}
+/* lists */
+.list{display:flex;flex-direction:column;gap:12px}
+.prescription-card{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.prescription-card .meta{flex:1}
+.presc-meds{background:#f8fafc;padding:10px;border-radius:10px;margin-top:8px}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+.badge.upcoming{background:#eff6ff;color:#1e3a8a}
+.badge.due{background:#fff1f2;color:#7f1d1d}
+.badge.overdue{background:#fef3c7;color:#92400e}
+.badge.taken{background:#d1fae5;color:#065f46}
+.tiny{font-size:13px;color:var(--muted)}
+/* forms for new prescription */
+.form-card{max-width:900px}
+.medicine-row{display:grid;grid-template-columns: 1fr 150px 150px 140px 60px;gap:8px;align-items:center;margin-bottom:8px}
+.medicine-row input{padding:8px;font-size:13px}
+.remove-med{background:transparent;border:none;color:var(--danger);cursor:pointer;border-radius:8px;padding:6px}
+/* buttons */
+.btn{padding:8px 12px;border-radius:10px;border:none;cursor:pointer;background:#eef2ff}
+.btn.primary{background:var(--primary);color:white}
+.btn.danger{background:var(--danger);color:white}
+.btn.small{padding:6px 8px;font-size:13px;border-radius:8px}
+.actions{display:flex;gap:12px;justify-content:flex-end;margin-top:10px}
+/* modal */
+#modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:10000}
+#modal.hidden{z-index: -1;} /* Extra: Hide z-index when hidden */
+.modal-content{background:var(--card);padding:20px;border-radius:var(--radius);max-width:500px;max-height:80vh;overflow:auto;position:relative;box-shadow:var(--shadow)}
+#close-modal{position:absolute;top:10px;right:10px;font-size:20px}
+/* responsive */
+@media (max-width:900px){
+  .sidebar{display:none}
+  .grid.two-col{grid-template-columns:1fr}
+  .auth-card{width:92%}
+}
