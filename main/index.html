@@ -1,1 +1,145 @@
-!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light">
+  <title>MedicaMate</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- LOGIN PAGE -->
+  <main id="login-screen" class="screen center">
+    <div class="card auth-card">
+      <div class="brand">
+        <div class="logo">MM</div>
+        <h1>MedicaMate</h1>
+        <p class="muted">Smart reminders & prescriptions</p>
+      </div>
+      <div class="form-row">
+        <label>User type</label>
+        <select id="login-type">
+          <option value="patient">Patient</option>
+          <option value="doctor">Doctor</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Username</label>
+        <input id="login-username" type="text" placeholder="username" />
+      </div>
+      <div class="form-row">
+        <label>Password</label>
+        <div class="pw-row">
+          <input id="login-password" type="password" placeholder="password" />
+          <button id="toggle-pw" class="icon-btn" title="show/hide">👁</button>
+        </div>
+      </div>
+      <div class="form-row">
+        <button id="login-btn" class="btn primary">Login</button>
+      </div>
+    </div>
+  </main>
+  <!-- APP LAYOUT -->
+  <div id="app-screen" class="hidden">
+    <aside class="sidebar">
+      <div class="brand-sm">
+        <div class="logo-sm">MM</div>
+        <div>
+          <h2>MedicaMate</h2>
+          <p class="muted" id="sidebar-role"></p>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-btn" data-view="home">🏠 Dashboard</button>
+        <button class="nav-btn" data-view="prescriptions">📄 Prescriptions</button>
+        <button class="nav-btn" data-view="reminders">⏰ Reminders</button>
+        <button class="nav-btn" data-view="new-prescription" id="nav-new-presc">➕ New Prescription</button>
+      </nav>
+      <div class="spacer"></div>
+      <div class="user-card">
+        <div>
+          <div id="user-name" class="user-name"></div>
+          <div class="muted" id="user-username"></div>
+        </div>
+        <div>
+          <button id="logout-btn" class="btn danger small">Logout</button>
+        </div>
+      </div>
+    </aside>
+    <main class="main">
+      <!-- HOME / DASHBOARD -->
+      <section id="view-home" class="view">
+        <div class="grid two-col">
+          <div class="card">
+            <h3>Welcome, <span id="welcome-name"></span></h3>
+            <p class="muted" id="welcome-role"></p>
+            <p id="welcome-summary"></p>
+          </div>
+          <div class="card accent">
+            <h4>Next Reminder</h4>
+            <div id="next-reminder" class="muted">No reminders today</div>
+            <div style="margin-top:12px;">
+              <button id="open-reminders" class="btn">View reminders</button>
+            </div>
+          </div>
+        </div>
+        <div class="cards-row" id="quick-prescriptions"></div>
+      </section>
+      <!-- PRESCRIPTIONS -->
+      <section id="view-prescriptions" class="view hidden">
+        <div class="top-row">
+          <h2>Prescriptions</h2>
+          <div>
+            <input id="search-presc" placeholder="Search by patient or medicine..." />
+          </div>
+        </div>
+        <div id="prescriptions-list" class="list"></div>
+      </section>
+      <!-- REMINDERS -->
+      <section id="view-reminders" class="view hidden">
+        <div class="top-row">
+          <h2>Today's Reminders</h2>
+          <div>
+            <button id="mark-all-taken" class="btn small">Mark all taken</button>
+          </div>
+        </div>
+        <div id="reminders-list" class="list"></div>
+      </section>
+      <!-- NEW / EDIT PRESCRIPTION (only doctor) -->
+      <section id="view-new-prescription" class="view hidden">
+        <h2 id="presc-form-title">New Prescription</h2>
+        <div class="card form-card">
+          <div class="form-row">
+            <label>Patient</label>
+            <select id="presc-patient">
+              <option value="">Select a patient</option>
+            </select>
+          </div>
+          <div id="medicines-wrap">
+            <!-- medicine rows appended here -->
+          </div>
+          <div class="form-row">
+            <button id="add-medicine-btn" class="btn">Add medicine</button>
+          </div>
+          <div class="form-row">
+            <label>Notes</label>
+            <textarea id="presc-notes" rows="3" placeholder="Doctor notes..."></textarea>
+          </div>
+          <div class="form-row actions">
+            <button id="save-prescription" class="btn primary">Save Prescription</button>
+            <button id="cancel-prescription" class="btn">Cancel</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!-- MODAL FOR VIEWING PRESCRIPTIONS (patients/doctors view) -->
+  <div id="modal" class="hidden">
+    <div class="modal-content">
+      <button id="close-modal" class="icon-btn" title="close">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
